@@ -245,6 +245,7 @@ def collect_socket_data(km3net):
                                 if next_offset > km3net.max_cnt: km3net.max_cnt  = (next_offset)
                                 if next_offset < km3net.min_cnt: km3net.min_cnt  = (next_offset)
                                 if (km3net.count%km3net.ntraces == 0 and km3net.count >0):
+                                    km3net.CumData1 = np.append(km3net.CumData1,view[:ARRAYSIZE])
                                     if km3net.toggle == 0:
                                         km3net.DataRaw   = km3net.CumData1
                                         km3net.CumData1 = []
@@ -252,6 +253,7 @@ def collect_socket_data(km3net):
                                         km3net.data     = []
                                         km3net.toggle = 1                                      
                                     else:
+                                        km3net.CumData2 = np.append(km3net.CumData2,view[:ARRAYSIZE])
                                         km3net.DataRaw = km3net.CumData2                                      
                                         km3net.CumData2 = []
                                         km3net.CumData1 = []
